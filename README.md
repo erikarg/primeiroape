@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PrimeiroApê
 
-## Getting Started
+Planejamento inteligente para conquistar seu primeiro imóvel.
 
-First, run the development server:
+O **PrimeiroApê** é uma plataforma que ajuda pessoas a entender se já estão prontas para comprar seu primeiro apartamento ou casa.
+A aplicação simula financiamento, calcula entrada necessária e gera um plano personalizado para alcançar a casa própria.
+
+---
+
+## 🚀 Problema
+
+Comprar um imóvel é uma das decisões financeiras mais importantes da vida, mas a maioria das pessoas não sabe:
+
+* quanto precisa para a entrada
+* se sua renda suporta um financiamento
+* quanto tempo levará para chegar lá
+* quais passos seguir
+
+Ferramentas existentes são focadas apenas em **listar imóveis** ou **simular financiamento**, mas não ajudam no **planejamento completo da compra**.
+
+---
+
+## 💡 Solução
+
+O **PrimeiroApê** funciona como um **planejador financeiro para compra de imóvel**.
+
+A plataforma permite que o usuário:
+
+1. Informe sua renda, poupança e FGTS
+2. Simule valores de financiamento
+3. Descubra seu **score de prontidão para compra**
+4. Veja quanto falta para a entrada
+5. Receba um **plano personalizado** para conquistar o primeiro imóvel
+
+---
+
+## ✨ Funcionalidades
+
+* Simulação de financiamento
+* Cálculo de entrada necessária
+* Score de prontidão para compra
+* Plano personalizado de aquisição
+* Estimativa de parcelas
+* Interface simples e rápida (resultado em menos de 1 minuto)
+
+---
+
+## 🧱 Stack
+
+### Frontend
+
+* Next.js
+* React
+* TypeScript
+* TailwindCSS
+* Framer Motion
+
+---
+
+## 📦 Instalação
+
+Clone o repositório:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/seu-usuario/primeiro-ape.git
+cd primeiro-ape
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Instale as dependências:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Inicie o projeto:
 
-## Learn More
+```bash
+pnpm dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+A aplicação ficará disponível em:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+http://localhost:3000
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 📊 Objetivo do projeto
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+O objetivo do **PrimeiroApê** é criar a melhor ferramenta para planejamento da compra do primeiro imóvel no Brasil.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+A plataforma busca:
+
+* reduzir a incerteza financeira
+* tornar o processo de compra mais claro
+* ajudar jovens adultos a conquistar a casa própria com planejamento
