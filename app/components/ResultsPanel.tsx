@@ -52,12 +52,10 @@ export function ResultsPanel({ result, input }: ResultsPanelProps) {
 
   return (
     <div className="w-full space-y-5">
-      {/* Section 1: Readiness Score */}
       <SectionCard>
         <ReadinessGauge score={readiness} />
       </SectionCard>
 
-      {/* Section 2: Key Metrics */}
       <div>
         <h3 className="text-xs font-semibold text-muted uppercase tracking-wider mb-3 px-1">
           Detalhes da simulação
@@ -120,12 +118,10 @@ export function ResultsPanel({ result, input }: ResultsPanelProps) {
         </div>
       </div>
 
-      {/* Section 3: Purchase Plan */}
       <SectionCard>
         <PurchasePlanTimeline plan={plan} propertyValue={input.propertyValue} />
       </SectionCard>
 
-      {/* Section 4: Hidden Costs */}
       <SectionCard>
         <HiddenCostsBreakdown
           costs={hiddenCosts}
@@ -133,7 +129,6 @@ export function ResultsPanel({ result, input }: ResultsPanelProps) {
         />
       </SectionCard>
 
-      {/* Section 5: Recommendations */}
       <SectionCard>
         <Recommendations recommendations={readiness.recommendations} />
       </SectionCard>

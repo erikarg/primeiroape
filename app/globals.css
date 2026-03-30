@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
 :root {
-  /* Colors — Refined financial palette */
   --background: #fafafa;
   --foreground: #0f172a;
   --primary: #0d9488;
@@ -23,16 +22,12 @@
   --warning-light: #fef3c7;
   --danger: #dc2626;
   --danger-light: #fee2e2;
-
-  /* Shadows */
   --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.06), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.06), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.06), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
   --shadow-glow: 0 0 0 3px rgba(13, 148, 136, 0.15);
-
-  /* Radius */
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 14px;
@@ -113,7 +108,6 @@
   }
 }
 
-/* Base styles */
 body {
   background: var(--background);
   color: var(--foreground);
@@ -122,18 +116,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Financial numbers — tabular for alignment */
 .font-financial {
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.02em;
 }
 
-/* Smooth scroll for anchor links */
 html {
   scroll-behavior: smooth;
 }
 
-/* Focus ring utility */
 .focus-ring {
   outline: none;
 }
@@ -141,7 +132,6 @@ html {
   box-shadow: var(--shadow-glow);
 }
 
-/* Score counter animation */
 @keyframes countUp {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }

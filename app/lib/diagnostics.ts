@@ -18,8 +18,6 @@ function deriveExpenses(data: IData): number {
     : Math.max(data.income - data.monthlySavings, 0);
 }
 
-// --- Readiness Score ---
-
 const WEIGHTS = {
   incomeVsInstallment: 30,
   entryCoverage: 25,
@@ -36,24 +34,21 @@ export function calculateReadinessScore(
 ): IReadinessScore {
   const expenses = deriveExpenses(data);
 
-  // Income vs installment: how comfortably income covers the installment
   const installmentRatio = result.estimatedInstallment / data.income;
   const incomeScore = clamp(1 - installmentRatio / 0.4, 0, 1) * 100;
 
-  // Entry coverage: what % of entry is already available
-  const entryRatio = result.entry > 0 ? result.availableFunds / result.entry : 1;
+  const entryRatio =
+    result.entry > 0 ? result.availableFunds / result.entry : 1;
   const entryScore = clamp(entryRatio, 0, 1) * 100;
 
-  // Monthly savings rate: savings as % of income (30%+ = full marks)
   const savingsRatio = data.income > 0 ? data.monthlySavings / data.income : 0;
   const savingsScore = clamp(savingsRatio / 0.3, 0, 1) * 100;
 
-  // Emergency reserve: savings vs 6 months of expenses
   const emergencyTarget = expenses * EMERGENCY_MONTHS;
-  const emergencyRatio = emergencyTarget > 0 ? data.savings / emergencyTarget : 1;
+  const emergencyRatio =
+    emergencyTarget > 0 ? data.savings / emergencyTarget : 1;
   const emergencyScore = clamp(emergencyRatio, 0, 1) * 100;
 
-  // Rent burden: lower rent-to-income = better
   const rentRatio = data.income > 0 ? data.currentRent / data.income : 0;
   const rentScore = clamp(1 - rentRatio / 0.4, 0, 1) * 100;
 
@@ -79,42 +74,61 @@ function generateStatusItems(
 ): IStatusItem[] {
   const items: IStatusItem[] = [];
 
-  // Income vs installment
   if (result.estimatedInstallment <= data.income * 0.3) {
-    items.push({ type: "positive", message: "Renda suficiente para o financiamento" });
+    items.push({
+      type: "positive",
+      message: "Renda suficiente para o financiamento",
+    });
   } else {
-    items.push({ type: "warning", message: "A parcela pode comprometer mais de 30% da renda" });
+    items.push({
+      type: "warning",
+      message: "A parcela pode comprometer mais de 30% da renda",
+    });
   }
 
-  // Entry coverage
   if (result.remaining === 0) {
     items.push({ type: "positive", message: "Entrada já acumulada" });
   } else if (result.availableFunds >= result.entry * 0.5) {
-    items.push({ type: "positive", message: "Mais da metade da entrada já acumulada" });
+    items.push({
+      type: "positive",
+      message: "Mais da metade da entrada já acumulada",
+    });
   } else {
     items.push({ type: "warning", message: "Entrada ainda insuficiente" });
   }
 
-  // Savings rate
   if (data.monthlySavings >= data.income * 0.2) {
-    items.push({ type: "positive", message: "Capacidade de poupança saudável" });
+    items.push({
+      type: "positive",
+      message: "Capacidade de poupança saudável",
+    });
   } else {
-    items.push({ type: "warning", message: "Capacidade de poupança pode ser melhorada" });
+    items.push({
+      type: "warning",
+      message: "Capacidade de poupança pode ser melhorada",
+    });
   }
 
-  // Emergency reserve
   const emergencyTarget = expenses * EMERGENCY_MONTHS;
   if (data.savings >= emergencyTarget) {
     items.push({ type: "positive", message: "Reserva de emergência adequada" });
   } else {
-    items.push({ type: "warning", message: "Reserva de emergência abaixo do recomendado" });
+    items.push({
+      type: "warning",
+      message: "Reserva de emergência abaixo do recomendado",
+    });
   }
 
-  // Rent burden
   if (data.currentRent > 0 && data.currentRent <= data.income * 0.3) {
-    items.push({ type: "positive", message: "Aluguel dentro do limite saudável" });
+    items.push({
+      type: "positive",
+      message: "Aluguel dentro do limite saudável",
+    });
   } else if (data.currentRent > data.income * 0.3) {
-    items.push({ type: "warning", message: "Aluguel compromete mais de 30% da renda" });
+    items.push({
+      type: "warning",
+      message: "Aluguel compromete mais de 30% da renda",
+    });
   }
 
   return items;
@@ -127,7 +141,6 @@ function generateRecommendations(
 ): string[] {
   const recommendations: string[] = [];
 
-  // Emergency reserve
   const emergencyTarget = expenses * EMERGENCY_MONTHS;
   if (data.savings < emergencyTarget) {
     recommendations.push(
@@ -135,7 +148,6 @@ function generateRecommendations(
     );
   }
 
-  // Entry shortfall
   if (result.remaining > 0) {
     if (result.availableFunds < result.entry * 0.5) {
       recommendations.push(
@@ -147,28 +159,24 @@ function generateRecommendations(
     );
   }
 
-  // Installment too high
   if (result.estimatedInstallment > data.income * 0.3) {
     recommendations.push(
       "Busque um imóvel de menor valor ou aumente sua renda para que a parcela fique abaixo de 30% da renda.",
     );
   }
 
-  // Increase entry to reduce financing
   if (result.remaining === 0 && result.availableFunds > result.entry * 1.1) {
     recommendations.push(
       "Considere usar o excedente para dar uma entrada maior (25-30%) e reduzir o valor financiado.",
     );
   }
 
-  // FGTS reminder
   if (!data.fgts || data.fgts === 0) {
     recommendations.push(
       "Verifique se você possui saldo de FGTS disponível — ele pode ser usado como parte da entrada.",
     );
   }
 
-  // High rent
   if (data.currentRent > data.income * 0.3) {
     recommendations.push(
       "Considere reduzir custos de moradia atual para liberar mais capacidade de poupança.",
@@ -178,8 +186,6 @@ function generateRecommendations(
   return recommendations;
 }
 
-// --- Purchase Plan ---
-
 export function generatePurchasePlan(
   data: IData,
   result: ISimulationResult,
@@ -188,7 +194,6 @@ export function generatePurchasePlan(
   const emergencyTarget = expenses * EMERGENCY_MONTHS;
   const steps: IPlanStep[] = [];
 
-  // Step 1: Emergency reserve
   const hasEmergency = data.savings >= emergencyTarget;
   const emergencyShortfall = Math.max(emergencyTarget - data.savings, 0);
   const emergencyMonths =
@@ -205,7 +210,6 @@ export function generatePurchasePlan(
     completed: hasEmergency,
   });
 
-  // Step 2: Save for entry
   const hasEntry = result.remaining === 0;
   steps.push({
     title: "Juntar o valor da entrada",
@@ -216,7 +220,6 @@ export function generatePurchasePlan(
     completed: hasEntry,
   });
 
-  // Step 3: Bank simulation
   steps.push({
     title: "Simular com bancos",
     description:
@@ -227,7 +230,6 @@ export function generatePurchasePlan(
     completed: false,
   });
 
-  // Step 4: Purchase
   steps.push({
     title: "Comprar o imóvel",
     description:
@@ -249,8 +251,6 @@ export function generatePurchasePlan(
 function formatCurrency(value: number): string {
   return value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 }
-
-// --- Hidden Costs ---
 
 const ITBI_RATE = 0.03;
 const ESCRITURA_RATE = 0.01;

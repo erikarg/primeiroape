@@ -73,7 +73,6 @@ export function ReadinessGauge({ score }: ReadinessGaugeProps) {
       </div>
 
       <div className="flex flex-col sm:flex-row items-center gap-8">
-        {/* SVG Gauge */}
         <div className="relative w-40 h-40 flex-shrink-0">
           <svg className="w-40 h-40 -rotate-90" viewBox="0 0 144 144">
             <circle
@@ -95,7 +94,8 @@ export function ReadinessGauge({ score }: ReadinessGaugeProps) {
               strokeDasharray={circumference}
               strokeDashoffset={offset}
               style={{
-                transition: "stroke-dashoffset 1.2s cubic-bezier(0.33, 1, 0.68, 1)",
+                transition:
+                  "stroke-dashoffset 1.2s cubic-bezier(0.33, 1, 0.68, 1)",
               }}
             />
           </svg>
@@ -111,7 +111,6 @@ export function ReadinessGauge({ score }: ReadinessGaugeProps) {
           </div>
         </div>
 
-        {/* Status Items */}
         <div className="flex-1 w-full space-y-2.5">
           <h4 className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">
             Situação financeira

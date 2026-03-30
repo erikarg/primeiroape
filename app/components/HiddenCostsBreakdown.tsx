@@ -2,13 +2,7 @@
 
 import { motion } from "framer-motion";
 import { formatBRL } from "../lib/formatters";
-import {
-  Receipt,
-  FileText,
-  Landmark,
-  Building2,
-  Info,
-} from "lucide-react";
+import { Receipt, FileText, Landmark, Building2, Info } from "lucide-react";
 import type { IHiddenCosts } from "../types";
 
 interface HiddenCostsBreakdownProps {
@@ -89,7 +83,6 @@ export function HiddenCostsBreakdown({
           </motion.div>
         ))}
 
-        {/* Total row */}
         <div className="flex items-center justify-between p-4 bg-surface-subtle border-t border-border">
           <div>
             <p className="text-sm font-bold text-foreground">Total estimado</p>
