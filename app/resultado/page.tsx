@@ -78,7 +78,7 @@ export default async function ResultPage({
             Preencha o simulador para gerar seu diagnóstico.
           </p>
           <Link
-            href="/simulator"
+            href="/simulador"
             className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-semibold rounded-xl hover:bg-primary-hover transition-all shadow-sm hover:shadow-md"
           >
             Fazer nova simulação
@@ -107,7 +107,7 @@ export default async function ResultPage({
 
         <div className="mt-8 flex flex-col sm:flex-row gap-3">
           <Link
-            href="/simulator"
+            href="/simulador"
             className="px-6 py-3 bg-primary text-white font-semibold rounded-xl hover:bg-primary-hover transition-all shadow-sm hover:shadow-md text-center text-sm"
           >
             Simular novamente

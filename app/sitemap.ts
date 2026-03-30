@@ -10,7 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     {
-      url: `${SITE_URL}/simulator`,
+      url: `${SITE_URL}/simulador`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,

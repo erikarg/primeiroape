@@ -34,7 +34,7 @@ export function Footer() {
             </h4>
             <div className="flex flex-col gap-2">
               <Link
-                href="/simulator"
+                href="/simulador"
                 className="text-sm text-muted hover:text-foreground transition-colors"
               >
                 Simulador

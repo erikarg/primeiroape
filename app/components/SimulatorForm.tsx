@@ -64,7 +64,7 @@ export function SimulatorForm({
           params.set(shortKey, String(value));
         }
       }
-      router.push(`/result?${params.toString()}`);
+      router.push(`/resultado?${params.toString()}`);
     }
   };
 

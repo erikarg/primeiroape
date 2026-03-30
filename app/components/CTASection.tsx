@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatedSection } from "./ui/AnimatedSection";
-import { ArrowDown } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 
 export function CTASection() {
   return (
@@ -23,7 +23,7 @@ export function CTASection() {
             className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-white font-semibold rounded-xl hover:bg-primary-hover transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
           >
             Começar Simulação
-            <ArrowDown className="w-4 h-4" />
+            <ArrowUp className="w-4 h-4" />
           </a>
         </div>
       </AnimatedSection>
