@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://primeiroape.vercel.app"),
+  metadataBase: new URL("https://primeiro-ape.vercel.app"),
   title: {
     default: "PrimeiroApê — Planeje a compra do seu primeiro imóvel",
     template: "%s | PrimeiroApê",
